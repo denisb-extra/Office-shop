@@ -943,6 +943,7 @@ section.cats-menu {
 		height: 100%;
 
 		.item {
+			display: block;
 			&:hover, &.active {
 				background: #e4e4e4;
 				p {
@@ -1054,6 +1055,7 @@ section.products-new {
 		font-size: 0;
 		margin: 0 -0.5%;
 		margin-top: 35px;
+		overflow: auto;
 		.no-products {
 			@include f-b;
 			font-size: 22px;
@@ -1136,7 +1138,15 @@ section.products-new {
 
 			&.big {
 				width: 49%;
-				padding-bottom: 55%;
+				padding-bottom: 54.9%;
+
+				&:after {
+					content: url('../images/preloader.gif');;
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
 			}
 			
 			img.main {
@@ -1146,6 +1156,7 @@ section.products-new {
 				left: 50%;
 				transform: translate(-50%, -50%);
 				transition: 0.5s;
+				z-index: 1;
 			}
 			&:hover {
 				img.main {
@@ -1162,6 +1173,9 @@ section.products-new {
 			}
 		}
 	}
+
+	
+
 
 	.more {
 		@include f-m;
@@ -1236,8 +1250,23 @@ section.products-new {
 			}
 		}
 	}
+}
 
+.pagination {
+	clear: both;
+	text-align: center;
+	margin-top: 55px;
+	@include f-m;
+	font-size: 24px;
+	color: #3c3c3c;
+	.page-numbers {
+		color: #3c3c3c;
+		margin: 0 5px;
+	}
 
+	.current {
+		color: #a31e23;
+	}
 }
 /* --------------------- /Section products-new ---------------------- */
 
@@ -1737,6 +1766,10 @@ footer {
 				ul {
 					column-count: 2;
 					column-gap: 100px;
+					-webkit-padding-start: 0;
+					list-style: none;
+					margin: 0;
+					padding: 0;
 					li {
 				
 						a {

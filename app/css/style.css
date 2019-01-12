@@ -35,6 +35,10 @@ ul {
   margin: 0;
   padding: 0; }
 
+.content ul, .part-info ul {
+  list-style: disc;
+  padding-right: 20px; }
+
 section {
   width: 100%;
   max-width: 1920px;
@@ -748,10 +752,12 @@ section.cats-menu {
         -ms-flex-align: strech;
             align-items: strech;
     height: 100%; }
-    section.cats-menu .items .item:hover, section.cats-menu .items .item.active {
-      background: #e4e4e4; }
-      section.cats-menu .items .item:hover p, section.cats-menu .items .item.active p {
-        color: #a31e23; }
+    section.cats-menu .items .item {
+      display: block; }
+      section.cats-menu .items .item:hover, section.cats-menu .items .item.active {
+        background: #e4e4e4; }
+        section.cats-menu .items .item:hover p, section.cats-menu .items .item.active p {
+          color: #a31e23; }
   section.cats-menu .item {
     padding: 0 35px;
     height: 100%;
@@ -829,7 +835,8 @@ section.products-new {
   section.products-new .boxes {
     font-size: 0;
     margin: 0 -0.5%;
-    margin-top: 35px; }
+    margin-top: 35px;
+    overflow: auto; }
     section.products-new .boxes .no-products {
       font-family: 'Rubik', sans-serif;
       font-weight: 700;
@@ -901,7 +908,14 @@ section.products-new {
           float: left; }
       section.products-new .boxes .box.big {
         width: 49%;
-        padding-bottom: 55%; }
+        padding-bottom: 54.9%; }
+        section.products-new .boxes .box.big:after {
+          content: url("../images/preloader.gif");
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translate(-50%, -50%);
+                  transform: translate(-50%, -50%); }
       section.products-new .boxes .box img.main {
         max-width: 60%;
         position: absolute;
@@ -910,7 +924,8 @@ section.products-new {
         -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
         -webkit-transition: 0.5s;
-        transition: 0.5s; }
+        transition: 0.5s;
+        z-index: 1; }
       section.products-new .boxes .box:hover img.main {
         -webkit-transform: translate(-50%, -50%) scale(1.1);
                 transform: translate(-50%, -50%) scale(1.1); }
@@ -970,6 +985,20 @@ section.products-new {
           height: 400px; }
           section.products-new .boxes .box.big .desc-bottom {
             display: none; } }
+
+.pagination {
+  clear: both;
+  text-align: center;
+  margin-top: 55px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #3c3c3c; }
+  .pagination .page-numbers {
+    color: #3c3c3c;
+    margin: 0 5px; }
+  .pagination .current {
+    color: #a31e23; }
 
 /* --------------------- /Section products-new ---------------------- */
 /* ---------------------- Section why ---------------------- */
@@ -1379,7 +1408,11 @@ footer {
           -webkit-column-count: 2;
                   column-count: 2;
           -webkit-column-gap: 100px;
-                  column-gap: 100px; }
+                  column-gap: 100px;
+          -webkit-padding-start: 0;
+          list-style: none;
+          margin: 0;
+          padding: 0; }
           footer .columns .column .content ul li a {
             font-family: 'Rubik', sans-serif;
             font-weight: 400;
@@ -1870,7 +1903,8 @@ section.post {
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 30px;
-    line-height: 30px; }
+    line-height: 30px;
+    margin-top: 20px; }
   section.post p {
     margin-top: 20px; }
   section.post .image-main {
@@ -2051,11 +2085,13 @@ section.blog {
   section.blog .boxes {
     font-size: 0;
     margin: 0 -0.5%;
-    margin-top: 35px; }
+    margin-top: 35px;
+    overflow: auto; }
     section.blog .boxes .box {
       position: relative;
       background: #fff;
       width: 24%;
+      height: 24%;
       margin: 0.5%;
       padding-bottom: 24%;
       float: right;
@@ -2064,8 +2100,8 @@ section.blog {
       -webkit-backface-visibility: hidden;
       -webkit-transform: translateZ(0) scale(1, 1); }
       section.blog .boxes .box.big {
-        width: 48%;
-        padding-bottom: 49%; }
+        width: 49%;
+        padding-bottom: 48.9%; }
       section.blog .boxes .box img.main {
         width: 100%;
         height: 100%;
@@ -2676,6 +2712,9 @@ section.product {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between; }
@@ -2704,9 +2743,15 @@ section.product {
         font-family: 'Rubik', sans-serif;
         font-weight: 700;
         font-size: 22px;
-        color: #3c3c3c; }
+        color: #3c3c3c;
+        text-decoration: none; }
         section.product .parts .part-info .price .woocommerce-Price-amount {
           color: #a42227; }
+        section.product .parts .part-info .price ins {
+          text-decoration: none; }
+        section.product .parts .part-info .price del {
+          font-size: 16px;
+          margin-left: 15px; }
       section.product .parts .part-info .single_add_to_cart_button {
         font-family: 'Rubik', sans-serif;
         font-weight: 500;
@@ -2728,6 +2773,126 @@ section.product {
         font-size: 17px;
         color: #3c3c3c;
         margin-top: 25px; }
+      section.product .parts .part-info .quantity {
+        margin-top: 25px;
+        display: none; }
+      section.product .parts .part-info .cart {
+        margin-top: 35px; }
+      section.product .parts .part-info .price_total {
+        text-align: right;
+        font-family: 'Rubik', sans-serif;
+        font-weight: 500;
+        font-size: 17px;
+        color: #3c3c3c;
+        margin-top: 25px; }
+      section.product .parts .part-info .custom_options h3 {
+        font-family: 'Rubik', sans-serif;
+        font-weight: 400;
+        font-size: 17px;
+        color: #787878;
+        outline: none;
+        padding: 20px 0;
+        cursor: pointer;
+        background-image: url("../images/icons/tr-d.jpg");
+        background-repeat: no-repeat;
+        background-position: left 10px center;
+        border-top: 1px solid #3c3c3c;
+        border-bottom: 1px solid #3c3c3c; }
+        section.product .parts .part-info .custom_options h3.ui-state-active {
+          background-image: url("../images/icons/minus.jpg"); }
+      section.product .parts .part-info .custom_options .eocustomgroup {
+        margin: 0 -1%;
+        height: auto; }
+        section.product .parts .part-info .custom_options .eocustomgroup .cont-options {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+          padding: 20px 0; }
+          section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button {
+            margin: 5px 1%;
+            padding-bottom: 3px;
+            position: relative;
+            text-align: center;
+            width: 80px; }
+            section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio label, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button label {
+              display: block;
+              margin: auto;
+              cursor: pointer; }
+              section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio label input, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button label input {
+                display: none !important; }
+              section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio label img, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button label img {
+                width: 50px;
+                height: 50px;
+                border-radius: 100%;
+                overflow: hidden;
+                border: 2px solid rgba(255, 255, 255, 0);
+                -webkit-transition: 0.5s;
+                transition: 0.5s; }
+              section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio label .rowTitle, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button label .rowTitle {
+                font-family: 'Rubik', sans-serif;
+                font-weight: 400;
+                font-size: 14px;
+                color: #3c3c3c;
+                text-align: center;
+                display: block;
+                margin-top: 5px; }
+                section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio label .rowTitle .price, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button label .rowTitle .price {
+                  display: block;
+                  font-family: 'Rubik', sans-serif;
+                  font-weight: 400;
+                  font-size: 10px;
+                  color: #3c3c3c;
+                  margin-top: 0px;
+                  text-align: center; }
+                  section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio label .rowTitle .price .woocommerce-Price-amount, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button label .rowTitle .price .woocommerce-Price-amount {
+                    color: #3c3c3c; }
+              section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio label input[type=radio]:checked ~ img, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button label input[type=radio]:checked ~ img {
+                border: 2px solid #a31e23; }
+              section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio label input[type=radio]:checked ~ span, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button label input[type=radio]:checked ~ span {
+                color: #a42227; }
+                section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio label input[type=radio]:checked ~ span .woocommerce-Price-amount, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button label input[type=radio]:checked ~ span .woocommerce-Price-amount {
+                  color: #a42227; }
+            section.product .parts .part-info .custom_options .eocustomgroup .cont-options .radio input, section.product .parts .part-info .custom_options .eocustomgroup .cont-options .sim_radio_button input {
+              position: absolute; }
+      section.product .parts .part-info .accordion {
+        font-family: 'Rubik', sans-serif;
+        font-weight: 500;
+        font-size: 17px;
+        color: #3c3c3c;
+        margin-top: 40px; }
+        section.product .parts .part-info .accordion h3 {
+          padding: 20px 0;
+          outline: none;
+          border-top: 1px solid #3c3c3c;
+          border-bottom: 1px solid #3c3c3c;
+          cursor: pointer;
+          background-image: url("../images/icons/plus.jpg");
+          background-repeat: no-repeat;
+          background-position: left 10px center; }
+          section.product .parts .part-info .accordion h3.ui-state-active {
+            background-image: url("../images/icons/minus.jpg"); }
+        section.product .parts .part-info .accordion .cont {
+          padding: 20px 0; }
+          section.product .parts .part-info .accordion .cont p {
+            margin-top: 10px; }
+            section.product .parts .part-info .accordion .cont p:first-child {
+              margin-top: 0; }
+      section.product .parts .part-info .series {
+        margin-top: 35px; }
+        section.product .parts .part-info .series .title {
+          font-family: 'Rubik', sans-serif;
+          font-weight: 500;
+          font-size: 20px;
+          color: #000; }
+        section.product .parts .part-info .series a {
+          display: block;
+          font-family: 'Rubik', sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          color: #000;
+          margin-top: 5px; }
     section.product .parts .part-images {
       background: #ebebeb;
       width: 54%;
@@ -2811,7 +2976,13 @@ section.more-products {
       cursor: pointer; }
       section.more-products .slider .item .inner {
         background: #fff;
-        padding: 25px; }
+        padding: 25px;
+        padding-top: 60px; }
+        section.more-products .slider .item .inner .text {
+          position: absolute;
+          top: 25px;
+          left: 25px;
+          right: 25px; }
         section.more-products .slider .item .inner .model {
           font-family: 'Rubik', sans-serif;
           font-weight: 700;
@@ -2841,12 +3012,17 @@ section.more-products {
     section.more-products .slider {
       margin-top: 35px; }
       section.more-products .slider .item .inner {
-        padding: 10px; }
+        padding: 10px;
+        padding-top: 45px; }
+        section.more-products .slider .item .inner .text {
+          top: 10px;
+          left: 10px;
+          right: 10px; }
         section.more-products .slider .item .inner .model {
-          font-size: 18px;
-          line-height: 18px; }
+          font-size: 16px;
+          line-height: 16px; }
         section.more-products .slider .item .inner .name {
-          font-size: 16px; }
+          font-size: 15px; }
       section.more-products .slider .item .button {
         font-size: 16px;
         padding: 10px; } }
